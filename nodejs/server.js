@@ -23,7 +23,7 @@ app.get('/aws2/', function(req, res) {
 });
 
 
-var server = app.listen(33333, function() {
+var server = app.listen(33333, '127.0.0.1',  function() {
     var host = server.address().address
     var port = server.address().port
 
