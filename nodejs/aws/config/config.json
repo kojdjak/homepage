@@ -1,2 +1,4 @@
 //insert your creds here
-//example - TODO
+//example 
+{ "accessKeyId": "akid", "secretAccessKey": "secret", "region": "us-east-1" }
+
