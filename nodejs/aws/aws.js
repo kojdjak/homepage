@@ -17,6 +17,23 @@ module.exports = {
             }
 
         });
+    },
+    listInstancesSimple: function(callback) {
+        ec2.describeInstances({}, function(err, data) {
+            if (err) {
+                callback(err);
+            }
+            else {
+                var retData = [];
+
+                for ( var i=0; i < data.Reservations[0].Instances.length; i++) {
+                    retData.push( { name:  data.Reservations[0].Instances[i].InstanceId }); 
+                }
+                console.log(retData);
+                callback(null, retData);
+            }
+
+        });
     }
 };
 
