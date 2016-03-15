@@ -22,6 +22,16 @@ app.get('/aws2/', function(req, res) {
     });
 });
 
+app.get('/aws3/', function(req, res) {
+    aws.listInstancesSimple(function(err, data) {
+       if (err)
+            res.send(500, {error: "something goes wrong"});
+        else { 
+           res.json(data);
+        }
+    });
+});
+
 
 var server = app.listen(33333, '127.0.0.1',  function() {
     var host = server.address().address
