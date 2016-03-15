@@ -29,7 +29,6 @@ module.exports = {
                 for ( var i=0; i < data.Reservations[0].Instances.length; i++) {
                     retData.push( { name:  data.Reservations[0].Instances[i].InstanceId }); 
                 }
-                console.log(retData);
                 callback(null, retData);
             }
 
