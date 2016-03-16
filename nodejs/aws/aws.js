@@ -25,10 +25,10 @@ module.exports = {
             }
             else {
                 var retData = [];
+                data.Reservations[0].Instances.forEach(function(item) {
+                    retData.push( { name: item.InstanceId } );
+                });
 
-                for ( var i=0; i < data.Reservations[0].Instances.length; i++) {
-                    retData.push( { name:  data.Reservations[0].Instances[i].InstanceId }); 
-                }
                 callback(null, retData);
             }
 
