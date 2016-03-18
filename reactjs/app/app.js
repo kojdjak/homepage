@@ -56,7 +56,7 @@ var App = React.createClass({
 });
 
 ReactDOM.render(
-    <App url="/homepage/aws/aws3"/>,
+    <App url="/homepage/aws/awsAllVMs"/>,
     document.getElementById('content')
 );
 
