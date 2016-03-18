@@ -32,6 +32,16 @@ app.get('/aws3/', function(req, res) {
     });
 });
 
+app.get('/awsAllVMs/', function(req, res) {
+    aws.listInstancesAllRegions(function(err, data) {
+       if (err)
+       res.send(500, {error: err.message});
+       else { 
+          res.json(data);
+          console.log("response sent");
+       }
+    });
+});
 
 var server = app.listen(33333, '127.0.0.1',  function() {
     var host = server.address().address
@@ -39,7 +49,7 @@ var server = app.listen(33333, '127.0.0.1',  function() {
 
      console.log("Listening at http://%s:%s", host, port)
 
-})
+});
 
 //var server = http.createServer(function(req, res) {
 //  res.writeHead(200);
