@@ -7,7 +7,7 @@ var ec2 = new aws.EC2();
 var ec2AllRegions = [];
 var ec2ApiRegions = [];
 
-
+//this is to initialize regions API to be used later.
 ec2.describeRegions({}, function(err, data) {
     if (err) {
         return [];
@@ -53,17 +53,19 @@ module.exports = {
         });
     },
     listInstancesAllRegions: function(callback) {
+        //initialize what of regions has been already loaded and returned
         var loadedRegions = [];
         var allRegions = [];
         ec2AllRegions.Regions.forEach(function(item) {
             allRegions.push(item.RegionName);
             loadedRegions.push(false);
         });
-        var retData = [];
+        var retData = [];   //data to retunr. will be updtaed with response from all retions
 
         ec2ApiRegions.forEach(function(regionApi) {
             regionApi.describeInstances({}, function(err, data) {
                 if (err) {
+                    //just error. as TODO
                     callback(err);
                 }
                 else {
