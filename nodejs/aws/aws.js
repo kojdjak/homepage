@@ -5,7 +5,6 @@ aws.config.loadFromPath('/home/centos/production/homepage/nodejs/aws/config/conf
 
 var ec2 = new aws.EC2();
 var ec2AllRegions = [];
-var ec2AllRegionsIds = [];
 var ec2ApiRegions = [];
 
 
@@ -15,12 +14,10 @@ ec2.describeRegions({}, function(err, data) {
     }
     else {
         ec2AllRegions = data;
+        //get all regions and create new API for each of them
         ec2AllRegions.Regions.forEach(function(item) {
-            ec2AllRegionsIds.push(item.RegionName);
-            
-            aws.config.region = item.RegionName;
+            aws.config.region = item.RegionName;    //reuse the same aws, only change region
             ec2ApiRegions.push(new aws.EC2());
-            ec2AllRegionsIds.push(false);
         });
  
     }
@@ -28,8 +25,6 @@ ec2.describeRegions({}, function(err, data) {
 });
 
 module.exports = {
-    ec2: ec2,
-    ec2Regions: ec2AllRegions,
     listInstances: function(callback) {
         ec2.describeInstances({}, function(err, data) {
             if (err) {
