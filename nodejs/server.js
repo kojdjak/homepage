@@ -4,26 +4,8 @@ var app = express();
 
 var aws = require('./aws/aws');
 
-app.get('/aws/', function(req, res) {
-    aws.ec2.describeInstances({}, function(err, data) {
-        if (err)
-            res.send(500, {error: err.message});
-        else 
-            res.send(data);
-    });
-});
-
-app.get('/aws2/', function(req, res) {
-    aws.listInstances(function(err, data) {
-        if (err)
-            res.send(500, {error: err.message});
-        else 
-            res.send(data);
-    });
-});
-
-app.get('/aws3/', function(req, res) {
-    aws.listInstancesSimple(function(err, data) {
+app.get('/awsTest/', function(req, res) {
+   aws.listInstancesSimple(function(err, data) {
        if (err)
             res.send(500, {error: err.message});
         else { 
