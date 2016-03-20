@@ -1,4 +1,3 @@
-var http = require('http');
 var express = require('express');
 var app = express();
 
@@ -20,7 +19,6 @@ app.get('/awsAllVMs/', function(req, res) {
        res.send(500, {error: err.message});
        else { 
           res.json(data);
-          console.log("response sent");
        }
     });
 });
