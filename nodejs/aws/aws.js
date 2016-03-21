@@ -65,20 +65,21 @@ module.exports = {
         ec2ApiRegions.forEach(function(regionApi) {
             regionApi.describeInstances({}, function(err, data) {
                 if (err) {
-                    //just error. as TODO
+                    //just error 
                     callback(err);
                 }
                 else {
+                    //process one region
                     loadedRegions[allRegions.indexOf(regionApi.config.region)] = true;
                     if (data.Reservations[0] != undefined ) {
                         data.Reservations[0].Instances.forEach(function(item) {
                             retData.push( { name: item.InstanceId } );
                         });
                     }
-
-                   if (callback!=null && areAllTrue(loadedRegions) ) {
+                    //if all regions are back, return aggregated result
+                    if (callback!=null && areAllTrue(loadedRegions) ) {
                         callback(null, retData);
-                   }                   
+                    }                   
                 }
             });
         });
