@@ -1,5 +1,11 @@
+require("node-jsx").install();
+//require('babel-register'); 
+
 var express = require('express');
 var app = express();
+var ReactDOMServer = require('react-dom/server');
+var React = require('react');
+var ReactApp = React.createFactory(require('./react/components/app.js').ReactApp);
 
 var aws = require('./aws/aws');
 
@@ -21,6 +27,11 @@ app.get('/awsAllVMs/', function(req, res) {
           res.json(data);
        }
     });
+});
+
+app.get('/react/', function(req, res) {
+    var reactHtml = ReactDOMServer.renderToString(ReactApp({}));
+    res.send(reactHtml);
 });
 
 var server = app.listen(33333, '127.0.0.1',  function() {
