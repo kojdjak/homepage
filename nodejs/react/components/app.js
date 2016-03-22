@@ -1,6 +1,6 @@
 var React = require('react');
 //var Aws = require('./aws.js');
-var AwsList = React.createFactory(require('./aws.js').Aws);
+var AwsList = React.createFactory(require('./aws.jsx').Aws);
 
 var Page = React.createClass({
     render:function() {
