@@ -1,11 +1,25 @@
 var React = require('react');
 
-var ReactApp = React.createClass({
-    render: function() {
+var Page = React.createClass({
+    render:function() {
         return (
-            <div>Hello World from server side React </div>
+            <html>
+                <head>
+                </head>
+                <body>
+                    <Main /> 
+                </body>
+            </html>
             );
     }
 });
 
-module.exports.ReactApp = ReactApp;
+var Main = React.createClass({
+    render: function() {
+        return (
+            <div id="main">Hello World from server side React </div>
+            );
+    }
+});
+
+module.exports.App = Page;

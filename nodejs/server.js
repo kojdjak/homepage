@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 var ReactDOMServer = require('react-dom/server');
 var React = require('react');
-var ReactApp = React.createFactory(require('./react/components/app.js').ReactApp);
+var ReactApp = React.createFactory(require('./react/components/app.js').App);
 
 var aws = require('./aws/aws');
 
@@ -31,7 +31,7 @@ app.get('/awsAllVMs/', function(req, res) {
 
 app.get('/react/', function(req, res) {
     var reactHtml = ReactDOMServer.renderToString(ReactApp({}));
-    res.send(reactHtml);
+    res.send("<!doctype html>"+reactHtml);
 });
 
 var server = app.listen(33333, '127.0.0.1',  function() {
