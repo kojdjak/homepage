@@ -1,3 +1,7 @@
+'use strit';
+
+var app = app || {};
+
 var React = require('react');
 //var Aws = require('./aws.js');
 var AwsList = React.createFactory(require('./aws.jsx').Aws);
